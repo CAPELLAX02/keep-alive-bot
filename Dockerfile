@@ -1,4 +1,4 @@
-# Use Python 3.9 based Docker image 
+# Use Python 3.9 based Docker image
 FROM python:3.9-slim
 
 # Determine the working directory
@@ -11,6 +11,9 @@ COPY .env .env
 
 # Download the required Python libraries
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Ensure logs are flushed immediately
+ENV PYTHONUNBUFFERED=1
 
 # Start the bot
 CMD ["python", "bot.py"]
